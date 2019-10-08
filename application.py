@@ -51,7 +51,7 @@ def submit_form():
     update_account(username, full_name, avatar_url)
 
     # Redirect to the user's profile page, if appropriate
-    return redirect(url_for('profile'))
+    return redirect(url_for('profile.html'))
 
 
 # Listen for GET requests to yourdomain.com/sign_s3/
