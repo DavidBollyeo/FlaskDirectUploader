@@ -40,6 +40,7 @@
         postData.append(key, s3Data.fields[key]);
       }
       postData.append('file', file);
+      postData.append('signatureVersion', 'v4');
 
 
       xhr.onreadystatechange = () => {

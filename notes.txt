@@ -1,0 +1,20 @@
+Error:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+<Code>InvalidRequest</Code>
+<Message>The authorization mechanism you have provided is not supported. Please use AWS4-HMAC-SHA256.</Message>
+<RequestId>360C71E122F155D9</RequestId>
+<HostId>27UXbV5xeq21xjgH3yVAkzRVqsBLhdedCBMTYQJvQgOmoXa8uK1x9miFh8RIplGvG0GJHPQDvpU=</HostId>
+</Error>
+
+{"data":
+{"url": "https://bollyeobucket.s3.amazonaws.com/",
+"fields": {
+"acl": "public-read",
+"Content-Type": "image/jpeg",
+"key": "srk.jpg",
+"AWSAccessKeyId": "AKIAIW6TDZ5752Y2UIBQ",
+"policy": "eyJleHBpcmF0aW9uIjogIjIwMTktMTAtMDlUMjA6NDI6NTRaIiwgImNvbmRpdGlvbnMiOiBbeyJhY2wiOiAicHVibGljLXJlYWQifSwgeyJDb250ZW50LVR5cGUiOiAiaW1hZ2UvanBlZyJ9LCB7ImJ1Y2tldCI6ICJib2xseWVvYnVja2V0In0sIHsia2V5IjogInNyay5qcGcifV19",
+"signature": "LfaFwO6DL3hvVlzaNPPucVSLPxo="}},
+"url": "https://bollyeobucket.s3.amazonaws.com/srk.jpg"}
