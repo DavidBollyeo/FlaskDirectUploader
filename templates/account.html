@@ -33,7 +33,6 @@
     function uploadFile(file, s3Data, url){
       const xhr = new XMLHttpRequest();
       xhr.open('POST', s3Data.url);
-      alert(s3Data.url);
       xhr.setRequestHeader('x-amz-acl', 'public-read');
 
       const postData = new FormData();
@@ -68,7 +67,7 @@
         if(xhr.readyState === 4){
           if(xhr.status === 200){
             const response = JSON.parse(xhr.responseText);
-            alert(response)
+            alert(xhr.responseText)
             uploadFile(file, response.data, response.url);
           }
           else{
