@@ -68,6 +68,7 @@
         if(xhr.readyState === 4){
           if(xhr.status === 200){
             const response = JSON.parse(xhr.responseText);
+            alert(response)
             uploadFile(file, response.data, response.url);
           }
           else{
