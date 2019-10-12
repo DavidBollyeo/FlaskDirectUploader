@@ -37,11 +37,10 @@
 
       const postData = new FormData();
       for(key in s3Data.fields){
+        alert(s3Data.fields[key]);
         postData.append(key, s3Data.fields[key]);
       }
       postData.append('file', file);
-      postData.append('signatureVersion', 'v4');
-
 
       xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){

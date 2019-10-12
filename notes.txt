@@ -18,3 +18,13 @@ Error:
 "policy": "eyJleHBpcmF0aW9uIjogIjIwMTktMTAtMDlUMjA6NDI6NTRaIiwgImNvbmRpdGlvbnMiOiBbeyJhY2wiOiAicHVibGljLXJlYWQifSwgeyJDb250ZW50LVR5cGUiOiAiaW1hZ2UvanBlZyJ9LCB7ImJ1Y2tldCI6ICJib2xseWVvYnVja2V0In0sIHsia2V5IjogInNyay5qcGcifV19",
 "signature": "LfaFwO6DL3hvVlzaNPPucVSLPxo="}},
 "url": "https://bollyeobucket.s3.amazonaws.com/srk.jpg"}
+
+
+AWS_S3_SIGNATURE_VERSION='s3v4'
+Trys:
+
+*   Create a new bucket... don't do cors or change anything and see if you get the same error
+*   Then add cors to this new bucket.
+*   Contact several companies on fivver
+*   Look for another place like codementor
+*   Look to see if AWS has any support!
