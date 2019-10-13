@@ -61,7 +61,7 @@ def submit_form():
 @app.route('/sign-s3/')
 def sign_s3():
     # Load necessary information into the application
-    S3_BUCKET = os.environ.get('S3_BUCKET')
+    s3_bucket = os.environ.get('S3_BUCKET')
 
     # Load required data from the request
     file_name = request.args.get('file-name')
@@ -72,7 +72,7 @@ def sign_s3():
 
     # Generate and return the presigned URL
     presigned_post = s3.generate_presigned_post(
-      Bucket = S3_BUCKET,
+      Bucket = s3_bucket,
       Key = file_name,
       Fields = {"acl": "public-read", "Content-Type": file_type},
       Conditions = [
@@ -85,7 +85,7 @@ def sign_s3():
     # Return the data to the client
     return json.dumps({
       'data': presigned_post,
-      'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, file_name)
+      'url': 'https://%s.s3.amazonaws.com/%s' % (s3_bucket, file_name)
     })
 
 
