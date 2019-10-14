@@ -37,7 +37,6 @@
 
       const postData = new FormData();
       for(key in s3Data.fields){
-        alert(s3Data.fields[key]);
         postData.append(key, s3Data.fields[key]);
       }
       postData.append('file', file);
@@ -49,7 +48,6 @@
             document.getElementById('avatar-url').value = url;
           }
           else{
-            alert(xhr.status)
             alert(xhr.responseText)
             alert('Could not upload file.');
           }
@@ -70,7 +68,6 @@
         if(xhr.readyState === 4){
           if(xhr.status === 200){
             const response = JSON.parse(xhr.responseText);
-            alert(xhr.responseText)
             uploadFile(file, response.data, response.url);
           }
           else{

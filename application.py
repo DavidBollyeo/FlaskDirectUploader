@@ -10,13 +10,21 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os, json, boto3
 import pymongo
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 uri = os.environ.get('MONGODB_URI')
+aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+print(f'uri: {uri}')
 
 client = pymongo.MongoClient(uri, connect=False)
 database = client.get_default_database()
 collection = database['stars']
+
 
 
 def update_account(username: str, full_name: str, avatar_url: str):
@@ -68,18 +76,19 @@ def sign_s3():
     file_type = request.args.get('file-type')
 
     # Initialise the S3 client
-    s3 = boto3.client('s3', region_name='eu-west-2')
+    s3 = boto3.client('s3', region_name='eu-west-2', aws_access_key_id=aws_access_key_id,
+                      aws_secret_access_key=aws_secret_access_key)
 
     # Generate and return the presigned URL
     presigned_post = s3.generate_presigned_post(
-      Bucket = s3_bucket,
-      Key = file_name,
-      Fields = {"acl": "public-read", "Content-Type": file_type},
+      Bucket=s3_bucket,
+      Key=file_name,
+      Fields={"acl": "public-read", "Content-Type": file_type},
       Conditions = [
         {"acl": "public-read"},
         {"Content-Type": file_type}
       ],
-      ExpiresIn = 3600
+      ExpiresIn=3600
     )
 
     # Return the data to the client
