@@ -11,6 +11,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import os, json, boto3
 import pymongo
 from dotenv import load_dotenv
+import time, datetime
 
 load_dotenv()
 
@@ -43,8 +44,13 @@ app = Flask(__name__)
 # Listen for GET requests to yourdomain.com/account/
 @app.route("/account/")
 def account():
+    file_prefix = str(time.mktime(datetime.datetime.today().timetuple()))
+    file_prefix = file_prefix.replace('.0', '') + '-'
+
+    print(file_prefix)
+
     # Show the account-edit HTML page:
-    return render_template('account.html')
+    return render_template('account.html', file_prefix=file_prefix)
 
 
 # Listen for POST requests to yourdomain.com/submit_form/

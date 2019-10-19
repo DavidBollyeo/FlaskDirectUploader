@@ -9,6 +9,8 @@
 
     <input type="file" id="file-input">
     <p id="status">Please select a pic</p>
+    <p hidden id="file_prefix">{{ file_prefix }}</p>
+
     <img style="border:1px solid gray;width:300px;" id="preview" src="/static/media/default.png">
 
     <h2>Your information</h2>
@@ -62,8 +64,11 @@
       request.
     */
     function getSignedRequest(file){
+      theFileName = document.getElementById('file_prefix').innerHTML;
+      theFileName = theFileName + file.name;
+
       const xhr = new XMLHttpRequest();
-      xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+      xhr.open('GET', `/sign-s3?file-name=${theFileName}&file-type=${file.type}`);
       xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){
           if(xhr.status === 200){
